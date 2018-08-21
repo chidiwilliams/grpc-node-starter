@@ -3,17 +3,40 @@ syntax = "proto3";
 package User;
 
 service User {
-  // Officers
-  // rpc createOfficer(officerInfo) returns(res) {};
-  // rpc updateOfficer(updateInfo) returns(res) {};
-  // rpc deleteOfficerByID(onlyID) returns(res) {};
-  // rpc getAllOfficers(emptyReq) returns(res) {};
-  // rpc getOfficerByID(onlyID) returns(res) {};
-  // rpc authenticateOfficer(loginDets) returns(res) {};
+  // Users
+  rpc createUser(userInfo) returns(res) {};
+  rpc getAllUsers(emptyReq) returns(res) {};
+  rpc getUserByID(onlyID) returns(res) {};
+  rpc updateUser(updateUserInfo) returns(res) {};
+  rpc deleteUserByID(onlyID) returns(res) {};
+  // Auth
+  rpc authenticateUserWithEmailAndPassword(emailAndPass) returns(res) {};
+}
+
+message userInfo {
+  optional string fullName = 1;
+  optional string email = 2;
+  optional string password = 3;
+}
+
+message updateUserInfo {
+  required string id = 1;
+  optional string updates = 2;
+}
+
+message emptyReq {}
+
+message onlyID {
+  required string id = 1;
+}
+
+message emailAndPass {
+  required string email = 1;
+  required string password = 2;
 }
 
 message res {
-  optional bool success = 1;
+  required bool success = 1;
   optional string data = 2;
   optional string message = 3;
 }

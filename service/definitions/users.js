@@ -1,5 +1,6 @@
 const Joi = require('joi');
 const db = require('../config/db');
+const { safeStringify } = require('../util');
 
 const User = db.models.user;
 
@@ -21,7 +22,7 @@ async function createUser(call, callback) {
     const data = await User.create({ fullName, email, password });
     callback(null, {
       success: true,
-      data: JSON.stringify(data, (key, val) => (val !== null ? val : undefined)),
+      data: safeStringify(data),
     });
   } catch (err) {
     console.error(err);
@@ -36,11 +37,11 @@ async function getUserByID(call, callback) {
     const validation = Joi.validate({ id }, schema);
     if (validation.error !== null) throw new Error(validation.error.details[0].message);
 
-    const user = await User.findById(id);
+    const data = await User.findById(id);
 
     callback(null, {
       success: true,
-      data: JSON.stringify(user, (key, val) => (val !== null ? val : undefined)),
+      data: safeStringify(data),
     });
   } catch (error) {
     console.error(error);
@@ -53,7 +54,7 @@ async function getAllUsers(call, callback) {
     const data = await User.find();
     callback(null, {
       success: true,
-      data: JSON.stringify(data, (key, val) => (val !== null ? val : undefined)),
+      data: safeStringify(data),
     });
   } catch (error) {
     console.error(error);
@@ -89,7 +90,7 @@ async function updateUser(call, callback) {
     const data = await user.save();
     callback(null, {
       success: true,
-      data: JSON.stringify(data, (key, val) => (val !== null ? val : undefined)),
+      data: safeStringify(data),
     });
   } catch (error) {
     console.error(error);
@@ -110,7 +111,7 @@ async function deleteUserByID(call, callback) {
     const data = await User.findByIdAndRemove(id);
     callback(null, {
       success: true,
-      data: JSON.stringify(data, (key, val) => (val !== null ? val : undefined)),
+      data: safeStringify(data),
     });
   } catch (err) {
     console.error(err);
