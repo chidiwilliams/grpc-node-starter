@@ -1,0 +1,27 @@
+{
+  "name": "grpc-node-service",
+  "version": "1.0.0",
+  "description": "Server service",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chidiwilliams/grpc-node-starter.git"
+  },
+  "keywords": [
+    "grpc",
+    "node",
+    "rest",
+    "mongoose",
+    "server",
+    "gateway"
+  ],
+  "author": "Chidi Williams",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/chidiwilliams/grpc-node-starter/issues"
+  },
+  "homepage": "https://github.com/chidiwilliams/grpc-node-starter#readme"
+}

@@ -1,0 +1,48 @@
+{
+  "name": "grpc-node-gateway",
+  "version": "1.0.0",
+  "description": "Server gateway",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "lint": "eslint ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chidiwilliams/grpc-node-starter.git"
+  },
+  "keywords": [
+    "grpc",
+    "node",
+    "rest",
+    "mongoose",
+    "server",
+    "gateway"
+  ],
+  "author": "Chidi Williams",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/chidiwilliams/grpc-node-starter/issues"
+  },
+  "homepage": "https://github.com/chidiwilliams/grpc-node-starter#readme",
+  "dependencies": {
+    "@grpc/proto-loader": "^0.3.0",
+    "bluebird": "^3.5.1",
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.4",
+    "dotenv": "^6.0.0",
+    "express": "^4.16.3",
+    "grpc": "^1.14.0",
+    "grpc-promise": "^1.1.0",
+    "http-errors": "^1.7.0",
+    "joi": "^13.6.0",
+    "jsonwebtoken": "^8.3.0",
+    "morgan": "^1.9.0"
+  },
+  "devDependencies": {
+    "eslint": "^5.3.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0"
+  }
+}
