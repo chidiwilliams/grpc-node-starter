@@ -1,7 +1,6 @@
 const grpc = require('grpc');
 const protoLoader = require('@grpc/proto-loader');
 require('dotenv').config();
-const path = require('path');
 const {
   getAllUsers,
   getUserByID,
@@ -11,8 +10,7 @@ const {
 } = require('./definitions/users');
 const { authenticateUserWithEmailAndPassword } = require('./definitions/auth');
 
-const PROTO_PATH = path.resolve(__dirname, './proto/user.proto');
-const packageDefinition = protoLoader.loadSync(PROTO_PATH);
+const packageDefinition = protoLoader.loadSync(process.env.PROTO_LOCATION);
 const userPackage = grpc.loadPackageDefinition(packageDefinition).User;
 
 (function main() {
