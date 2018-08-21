@@ -23,5 +23,18 @@
   "bugs": {
     "url": "https://github.com/chidiwilliams/grpc-node-starter/issues"
   },
-  "homepage": "https://github.com/chidiwilliams/grpc-node-starter#readme"
+  "homepage": "https://github.com/chidiwilliams/grpc-node-starter#readme",
+  "dependencies": {
+    "@grpc/proto-loader": "^0.3.0",
+    "bcrypt-nodejs": "0.0.3",
+    "bluebird": "^3.5.1",
+    "dotenv": "^6.0.0",
+    "grpc": "^1.14.0",
+    "mongoose": "^5.2.8"
+  },
+  "devDependencies": {
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb-base": "^13.0.0",
+    "eslint-plugin-import": "^2.12.0"
+  }
 }
