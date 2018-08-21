@@ -81,6 +81,11 @@ async function updateUser(call, callback) {
 
     const user = await User.findById(id);
 
+    if (!user) {
+      callback(null, { success: false, message: 'Not found' });
+      return;
+    }
+
     // Add all updates to user...
     Object.entries(upd).forEach(([key, val]) => {
       user[key] = val;
@@ -109,6 +114,10 @@ async function deleteUserByID(call, callback) {
     if (validation.error !== null) throw new Error(validation.error.details[0].message);
 
     const data = await User.findByIdAndRemove(id);
+    if (!data) {
+      callback(null, { success: false, message: 'Not found' });
+      return;
+    }
     callback(null, {
       success: true,
       data: safeStringify(data),
