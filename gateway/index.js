@@ -26,5 +26,5 @@ const server = app.listen(process.env.GATEWAY_PORT, () => {
     console.error(err, 'Uncaught Exception thrown');
     process.exit(1);
   });
-  console.log(`***\nGRPC Node Gateway listening at http://${address}:${port}\n***`);
+  console.log(`***\nGRPC Node Gateway started successfully on http://${address}:${port}\n***`);
 });

@@ -21,7 +21,9 @@ message userInfo {
 
 message updateUserInfo {
   required string id = 1;
-  optional string updates = 2;
+  optional string fullName = 2;
+  optional string email = 3;
+  optional string password = 4;
 }
 
 message emptyReq {}

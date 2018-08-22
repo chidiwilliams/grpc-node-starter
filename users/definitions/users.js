@@ -63,10 +63,11 @@ async function getAllUsers(call, callback) {
 }
 
 async function updateUser(call, callback) {
-  const { id, updates } = call.request;
+  const {
+    id, fullName, email, password,
+  } = call.request;
 
   try {
-    const upd = JSON.parse(updates);
     const schema = Joi.object().keys({
       id: Joi.string().required(),
       fullName: Joi.string().optional(),
@@ -76,7 +77,15 @@ async function updateUser(call, callback) {
       password: Joi.string().optional(),
     });
 
-    const validation = Joi.validate({ id, ...upd }, schema);
+    const validation = Joi.validate(
+      {
+        id,
+        fullName,
+        email,
+        password,
+      },
+      schema,
+    );
     if (validation.error !== null) throw new Error(validation.error.details[0].message);
 
     const user = await User.findById(id);
@@ -87,8 +96,8 @@ async function updateUser(call, callback) {
     }
 
     // Add all updates to user...
-    Object.entries(upd).forEach(([key, val]) => {
-      user[key] = val;
+    Object.entries({ fullName, email, password }).forEach(([key, val]) => {
+      if (val !== undefined) user[key] = val;
     });
 
     // Save user

@@ -68,11 +68,11 @@ router.post('/:id', async (req, res) => {
   const { id } = req.params;
 
   const schema = Joi.object().keys({
-    fullName: Joi.string().required(),
+    fullName: Joi.string().optional(),
     email: Joi.string()
       .email()
-      .required(),
-    password: Joi.string().required(),
+      .optional(),
+    password: Joi.string().optional(),
   });
   const validation = Joi.validate(req.body, schema);
   if (validation.error !== null) {
@@ -86,7 +86,9 @@ router.post('/:id', async (req, res) => {
   try {
     const user = await UserRPC.updateUser({
       id,
-      updates: JSON.stringify({ fullName, email, password }),
+      fullName,
+      email,
+      password,
     });
     if (!user.data) {
       res.status(404).json({ success: false, message: 'Not found' });
